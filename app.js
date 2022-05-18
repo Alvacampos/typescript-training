@@ -1,14 +1,19 @@
-var btn = document.querySelector('button');
-var input1 = document.getElementById('input1');
-var input2 = document.getElementById('input2');
-function combine(value1, value2) {
-    if (typeof value1 === 'number' && typeof value2 === 'number')
-        return value1 + value2;
-    else
-        return value1.toString() + value2.toString();
+function add(n1, n2) {
+    return n1 + n2;
 }
-console.log(combine(12, 5));
-console.log(combine(+input1.value, +input2.value));
-// btn.addEventListener('click', () => {
-//   console.log(combine(input1.value, input2.value));
-// });
+function printResult(num) {
+    console.log.apply('Result: ' + num);
+}
+// Callback fn
+function addAndHandle(n1, n2, cb) {
+    var result = n1 + n2;
+    cb(result);
+}
+printResult(add(5, 12));
+var combineValues;
+combineValues = add;
+// combineValues = 5
+console.log(combineValues(2, 3));
+addAndHandle(10, 20, function (result) {
+    console.log('Result from addAndHandle is: ' + result);
+});
